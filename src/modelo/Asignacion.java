@@ -1,6 +1,7 @@
 
 package modelo;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -13,7 +14,9 @@ public class Asignacion {
     private Date fecha_asignacion;
     private String firma;
 
-    public Asignacion() {
+    public Asignacion(String firma) {
+        this.firma = firma;
+        this.fecha_asignacion = new Date();
     }
 
     public Asignacion(int id_asignacion, Date fecha_asignacion, String firma) {
@@ -45,6 +48,17 @@ public class Asignacion {
     public void setFirma(String firma) {
         this.firma = firma;
     }
+    
+    
+    
+    public String obtenerFechaFormateada(){
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        return sdf.format(fecha_asignacion);
+    }
+    
+    
+    
+    
 
     @Override
     public String toString() {
