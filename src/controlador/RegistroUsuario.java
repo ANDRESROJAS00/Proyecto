@@ -42,20 +42,20 @@ public class RegistroUsuario {
 
     }
 
-    public boolean eliminarUsuario(int idUsuario) {
-
+    public boolean eliminarUsuario(int npi) {
         boolean flag = false;
-        try {
 
+        try {
             Conexion con = new Conexion();
             Connection cnx = con.obtenerConexion();
 
-            String query = "DELETE FROM usuario WHERE id_usuario = ?";
-            PreparedStatement stmt = cnx.prepareCall(query);
-            stmt.setInt(1, idUsuario);
+            String query = "DELETE FROM usuario WHERE npi = ?";
+            PreparedStatement stmt = cnx.prepareStatement(query);
+            stmt.setInt(1, npi);
 
-            int resp = JOptionPane.showConfirmDialog(null, "¿Seguro que deseas eliminar?", "Eliminar Usuario", 1);
-            if (resp == 0) {
+            int resp = JOptionPane.showConfirmDialog(null, "¿Seguro que deseas eliminar?", "Eliminar Usuario", JOptionPane.YES_NO_OPTION);
+
+            if (resp == JOptionPane.YES_OPTION) {
                 stmt.executeUpdate();
                 stmt.close();
                 cnx.close();
@@ -67,7 +67,6 @@ public class RegistroUsuario {
             flag = false;
         }
         return flag;
-
     }
 
     public boolean actualizarUsuario(String idUsuario, String nuevoNombre) {
@@ -129,47 +128,42 @@ public class RegistroUsuario {
         return usuario;
 
     }
-    
+
     public List<Usuario> buscarTodos() {
 
-    List<Usuario> lista = new ArrayList<>();
+        List<Usuario> lista = new ArrayList<>();
 
-    try {
+        try {
 
-        Conexion con = new Conexion();
-        Connection cnx = con.obtenerConexion();
+            Conexion con = new Conexion();
+            Connection cnx = con.obtenerConexion();
 
-        String query = "SELECT * FROM usuario";
-        PreparedStatement stmt = cnx.prepareCall(query);
+            String query = "SELECT * FROM usuario";
+            PreparedStatement stmt = cnx.prepareCall(query);
 
-        ResultSet rs = stmt.executeQuery();
+            ResultSet rs = stmt.executeQuery();
 
-        while (rs.next()) {
-            Usuario usuario = new Usuario();
-            usuario.setId_usuario(rs.getInt("id_usuario"));
-            usuario.setNpi(rs.getInt("npi"));
-            usuario.setPnombre(rs.getString("pnombre"));
-            usuario.setSnombre(rs.getString("snombre"));
-            usuario.setAppaterno(rs.getString("appaterno"));
-            usuario.setApmaterno(rs.getString("apmaterno"));
+            while (rs.next()) {
+                Usuario usuario = new Usuario();
+                usuario.setId_usuario(rs.getInt("id_usuario"));
+                usuario.setNpi(rs.getInt("npi"));
+                usuario.setPnombre(rs.getString("pnombre"));
+                usuario.setSnombre(rs.getString("snombre"));
+                usuario.setAppaterno(rs.getString("appaterno"));
+                usuario.setApmaterno(rs.getString("apmaterno"));
 
-            lista.add(usuario);
+                lista.add(usuario);
+            }
+
+            rs.close();
+            stmt.close();
+            cnx.close();
+
+        } catch (SQLException e) {
+            System.out.println("Error en la consulta SQL consultar todos los datos, " + e.getMessage());
+
         }
-
-        rs.close();
-        stmt.close();
-        cnx.close();
-
-    } catch (SQLException e) {
-        System.out.println("Error en la consulta SQL consultar todos los datos, " + e.getMessage());
-
+        return lista;
     }
-    return lista;
-}
-
-    
-    
-    
-    
 
 }
