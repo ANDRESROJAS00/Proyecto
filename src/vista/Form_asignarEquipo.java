@@ -6,7 +6,6 @@ package vista;
 
 import javax.swing.JOptionPane;
 import modelo.Asignacion;
-import modelo.Inventario;
 import controlador.RegistroAsignacion;
 
 /**
@@ -21,6 +20,8 @@ public class Form_asignarEquipo extends javax.swing.JFrame {
     public Form_asignarEquipo() {
         initComponents();
     }
+
+    private RegistroAsignacion registroAsignacion = new RegistroAsignacion();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -142,16 +143,16 @@ public class Form_asignarEquipo extends javax.swing.JFrame {
     }//GEN-LAST:event_jtxt_firmaUsuarioActionPerformed
 
     private void jbtn_asignarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_asignarActionPerformed
-      // Obtener los valores de los campos de texto y otros componentes
+        // Obtener los valores de los campos de texto y otros componentes
         String firma = jtxt_firmaUsuario.getText();
-        int idUsuario = obtenerIdUsuario();
-        int idEquipo = obtenerIdEquipo();
+        int idUsuario = obtenerIdUsuario();  // Deberías tener un método para obtener el ID del usuario seleccionado
+        int idEquipo = obtenerIdEquipo();    // Deberías tener un método para obtener el ID del equipo seleccionado
 
         // Crear un objeto Asignacion con los datos ingresados
         Asignacion asignacion = new Asignacion();
         asignacion.setFirma(firma);
-        asignacion.setId_usuario(idUsuario);
         asignacion.setId_inventario(idEquipo);
+        asignacion.setId_usuario(idUsuario);
 
         // Realizar la asignación llamando al método en el controlador
         if (registroAsignacion.asignarEquipo(asignacion)) {
@@ -160,31 +161,36 @@ public class Form_asignarEquipo extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Error al asignar el equipo");
         }
-    }                                            
 
-    // Método para obtener el ID del usuario desde tu interfaz
-    private int obtenerIdUsuario() {
-        // Aquí debes escribir el código para obtener el ID del usuario
-        // Puede ser desde un campo de texto, una lista desplegable u otro componente
-        // Retorna el ID del usuario seleccionado
-        return Integer.parseInt(jtxt_npiUsuario.getText()); // Reemplaza esto con la lógica adecuada
-    }
-
-    // Método para obtener el ID del equipo desde tu interfaz
-    private int obtenerIdEquipo() {
-        // Aquí debes escribir el código para obtener el ID del equipo
-        // Puede ser desde un campo de texto, una lista desplegable u otro componente
-        // Retorna el ID del equipo seleccionado
-        return Integer.parseInt(jtxt_nusEquipo.getText()); // Reemplaza esto con la lógica adecuada
-    }
-  
 
     }//GEN-LAST:event_jbtn_asignarActionPerformed
 
-/**
- * @param args the command line arguments
- */
-public static void main(String args[]) {
+    private int obtenerIdUsuario() {
+        try {
+            // Obtener el ID del usuario desde el campo de texto
+            return Integer.parseInt(jtxt_npiUsuario.getText());
+        } catch (NumberFormatException e) {
+            // Manejar la excepción si el valor no es un número entero válido
+            JOptionPane.showMessageDialog(null, "Ingrese un valor válido para el ID de usuario", "Error", JOptionPane.ERROR_MESSAGE);
+            return -1;  // o algún valor que indique que no se pudo obtener el ID
+        }
+    }
+
+    private int obtenerIdEquipo() {
+        try {
+            // Obtener el ID del equipo desde el campo de texto
+            return Integer.parseInt(jtxt_nusEquipo.getText());
+        } catch (NumberFormatException e) {
+            // Manejar la excepción si el valor no es un número entero válido
+            JOptionPane.showMessageDialog(null, "Ingrese un valor válido para el ID del equipo", "Error", JOptionPane.ERROR_MESSAGE);
+            return -1;  // o algún valor que indique que no se pudo obtener el ID
+        }
+    }
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -196,27 +202,23 @@ public static void main(String args[]) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
 
-}
+                }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Form_asignarEquipo.class  
+            java.util.logging.Logger.getLogger(Form_asignarEquipo.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Form_asignarEquipo.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
-} catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Form_asignarEquipo.class  
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Form_asignarEquipo.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-} catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Form_asignarEquipo.class  
-
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-} catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Form_asignarEquipo.class  
-
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Form_asignarEquipo.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
