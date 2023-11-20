@@ -4,6 +4,10 @@
  */
 package vista;
 
+import javax.swing.JOptionPane;
+import modelo.Usuario;
+import controlador.RegistroUsuario;
+
 /**
  *
  * @author Carmen Paz
@@ -223,7 +227,37 @@ public class Form_usario extends javax.swing.JFrame {
     }//GEN-LAST:event_jbtn_salirActionPerformed
 
     private void jbtn_ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_ingresarActionPerformed
+        String primerNombre = jtxt_primernombre.getText();
+        String segundoNombre = jtxt_segundonombre.getText();
+        String apellidoPaterno = jtxt_apellidopaterno.getText();
+        String apellidoMaterno = jtxt_apellidomaterno.getText();
+        String npi = jtxt_npi.getText();
+
+        // Crear un objeto Usuario con los datos ingresados
+        Usuario usuario = new Usuario();
+        usuario.setPnombre(primerNombre);
+        usuario.setSnombre(segundoNombre);
+        usuario.setAppaterno(apellidoPaterno);
+        usuario.setApmaterno(apellidoMaterno);
+
+        // Manejar la conversión de String a int para el NPI (asumiendo que el NPI es un número)
+        try {
+            usuario.setNpi(Integer.parseInt(npi));
+        } catch (NumberFormatException e) {
+            // Manejar la excepción si la conversión no es exitosa (por ejemplo, mostrar un mensaje al usuario)
+            System.out.println("Error al convertir el NPI a un número");
+            return;
+        }
         
+        RegistroUsuario ru = new RegistroUsuario();
+
+        // Insertar el usuario en la base de datos
+        if (ru.agregarUsuario(usuario)) {
+            JOptionPane.showMessageDialog(null, "Usuario ingresado correctamente");
+            
+        } else {
+            JOptionPane.showMessageDialog(null, "Error al ingresar el usuario");
+        }
     }//GEN-LAST:event_jbtn_ingresarActionPerformed
 
     private void jtxt_primernombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxt_primernombreActionPerformed
