@@ -1,0 +1,77 @@
+
+package controlador;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+/**
+ *
+ * @author salas
+ */
+public class Registroasignacion{
+    
+    public class Asignacion {
+        private String nomUsuario;
+        private String equipo;
+
+        public Asignacion(String nomUsuario, String equipo) {
+            this.nomUsuario = nomUsuario;
+            this.equipo = equipo;
+        }
+
+        @Override
+        public String toString() {
+            return "Trabajador: " + nomUsuario + ", Equipo asignado: " + equipo;
+        }
+    }
+
+    // Me tira error necesita revision porfa
+    class RegistroAsignaciones {
+        private List<Asignacion> asignaciones;
+
+        public RegistroAsignaciones() {
+            this.asignaciones = new ArrayList<>();
+        }
+
+        public void agregarAsignacion(Asignacion asignacion) {
+            asignaciones.add(asignacion);
+        }
+
+        public void mostrarAsignaciones() {
+            System.out.println("Asignaciones registradas:");
+            for (Asignacion asignacion : asignaciones) {
+                System.out.println(asignacion);
+            }
+        }
+    }
+
+    public class Main {
+        public static void main(String[] args) {
+            RegistroAsignaciones registro = new RegistroAsignaciones();
+            Scanner scanner = new Scanner(System.in);
+
+            System.out.println("Registro de Asignaciones");
+
+            while (true) {
+                System.out.print("Ingrese el nombre del trabajador: ");
+                String nomUsuario = scanner.nextLine();
+
+                if (nomUsuario.equalsIgnoreCase("salir")) {
+                    break;
+                }
+
+                System.out.print("Ingrese el nombre del equipo: ");
+                String equipo = scanner.nextLine();
+
+                //Asignacion nuevaAsignacion = new Asignacion();
+                Asignacion nuevaAsignacion = new Asignacion(nomUsuario,equipo)
+                registro.agregarAsignacion(nuevaAsignacion);
+
+                System.out.println("Asignación registrada con éxito.\n");
+            }
+
+            registro.mostrarAsignaciones();
+        }
+    }
+    
+}
