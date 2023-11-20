@@ -1,8 +1,7 @@
 
 package modelo;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+
 
 /**
  *
@@ -10,18 +9,16 @@ import java.util.Date;
  */
 public class Asignacion {
     
-    private int id_asignacion;
-    private Date fecha_asignacion;
+    private int id_asignacion, id_inventario, id_usuario;
     private String firma;
 
-    public Asignacion(String firma) {
-        this.firma = firma;
-        this.fecha_asignacion = new Date();
+    public Asignacion() {
     }
 
-    public Asignacion(int id_asignacion, Date fecha_asignacion, String firma) {
+    public Asignacion(int id_asignacion, int id_inventario, int id_usuario, String firma) {
         this.id_asignacion = id_asignacion;
-        this.fecha_asignacion = fecha_asignacion;
+        this.id_inventario = id_inventario;
+        this.id_usuario = id_usuario;
         this.firma = firma;
     }
 
@@ -33,12 +30,20 @@ public class Asignacion {
         this.id_asignacion = id_asignacion;
     }
 
-    public Date getFecha_asignacion() {
-        return fecha_asignacion;
+    public int getId_inventario() {
+        return id_inventario;
     }
 
-    public void setFecha_asignacion(Date fecha_asignacion) {
-        this.fecha_asignacion = fecha_asignacion;
+    public void setId_inventario(int id_inventario) {
+        this.id_inventario = id_inventario;
+    }
+
+    public int getId_usuario() {
+        return id_usuario;
+    }
+
+    public void setId_usuario(int id_usuario) {
+        this.id_usuario = id_usuario;
     }
 
     public String getFirma() {
@@ -48,22 +53,20 @@ public class Asignacion {
     public void setFirma(String firma) {
         this.firma = firma;
     }
-    
-    
-    
-    public String obtenerFechaFormateada(){
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-        return sdf.format(fecha_asignacion);
+
+    @Override
+    public String toString() {
+        return "Asignacion{" + "id_asignacion=" + id_asignacion + ", id_inventario=" + id_inventario + ", id_usuario=" + id_usuario + ", firma=" + firma + '}';
     }
+
     
     
     
     
 
-    @Override
-    public String toString() {
-        return "Asignacion{" + "id_asignacion=" + id_asignacion + ", fecha_asignacion=" + fecha_asignacion + ", firma=" + firma + '}';
-    }
+    
+
+    
     
     
     
