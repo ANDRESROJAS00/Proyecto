@@ -195,8 +195,8 @@ public class Form_usuario extends javax.swing.JFrame {
     }//GEN-LAST:event_jtxt_npiActionPerformed
 
     private void jbtn_ingresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_ingresarActionPerformed
-        
-       String primerNombre = jtxt_primernombre.getText();
+
+        String primerNombre = jtxt_primernombre.getText();
         String segundoNombre = jtxt_segundonombre.getText();
         String apellidoPaterno = jtxt_apellidopaterno.getText();
         String apellidoMaterno = jtxt_apellidomaterno.getText();
@@ -217,7 +217,7 @@ public class Form_usuario extends javax.swing.JFrame {
             System.out.println("Error al convertir el NPI a un número");
             return;
         }
-        
+
         RegistroUsuario ru = new RegistroUsuario();
 
         // Insertar el usuario en la base de datos

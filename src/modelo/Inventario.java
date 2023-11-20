@@ -6,16 +6,18 @@ package modelo;
  */
 public class Inventario {
     
-    private int id_inventario, numero_serie;
-    private String ubicacion;
+    private int id_inventario, numero_serie, nus;
+    private String ubicacion, descripcion;
 
     public Inventario() {
     }
 
-    public Inventario(int id_inventario, int numero_serie, String ubicacion) {
+    public Inventario(int id_inventario, int numero_serie, int nus, String ubicacion, String descripcion) {
         this.id_inventario = id_inventario;
         this.numero_serie = numero_serie;
+        this.nus = nus;
         this.ubicacion = ubicacion;
+        this.descripcion = descripcion;
     }
 
     public int getId_inventario() {
@@ -34,6 +36,14 @@ public class Inventario {
         this.numero_serie = numero_serie;
     }
 
+    public int getNus() {
+        return nus;
+    }
+
+    public void setNus(int nus) {
+        this.nus = nus;
+    }
+
     public String getUbicacion() {
         return ubicacion;
     }
@@ -42,10 +52,22 @@ public class Inventario {
         this.ubicacion = ubicacion;
     }
 
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
     @Override
     public String toString() {
-        return "Inventario{" + "id_inventario=" + id_inventario + ", numero_serie=" + numero_serie + ", ubicacion=" + ubicacion + '}';
+        return "Inventario{" + "id_inventario=" + id_inventario + ", numero_serie=" + numero_serie + ", nus=" + nus + ", ubicacion=" + ubicacion + ", descripcion=" + descripcion + '}';
     }
+    
+    
+
+    
     
     
     
