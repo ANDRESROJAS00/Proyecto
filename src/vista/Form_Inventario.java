@@ -40,6 +40,7 @@ public class Form_Inventario extends javax.swing.JFrame {
         jtxt_numeroserie = new javax.swing.JTextField();
         jtxt_ubicacion = new javax.swing.JTextField();
         jbtn_ingresar = new javax.swing.JButton();
+        jtbn_salir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -90,6 +91,13 @@ public class Form_Inventario extends javax.swing.JFrame {
             }
         });
 
+        jtbn_salir.setText("Salir");
+        jtbn_salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtbn_salirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -111,7 +119,8 @@ public class Form_Inventario extends javax.swing.JFrame {
                             .addComponent(jtxt_nus)
                             .addComponent(jtxt_numeroserie)
                             .addComponent(jtxt_ubicacion))
-                        .addGap(0, 57, Short.MAX_VALUE)))
+                        .addGap(0, 57, Short.MAX_VALUE))
+                    .addComponent(jtbn_salir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -136,6 +145,8 @@ public class Form_Inventario extends javax.swing.JFrame {
                     .addComponent(jtxt_ubicacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jbtn_ingresar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jtbn_salir)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -196,9 +207,19 @@ public class Form_Inventario extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Error al ingresar el equipo", "Ingresar Equipo", JOptionPane.ERROR_MESSAGE);
         }
+        
+        this.dispose();
+        
+        Form_asignarEquipo formAsignarEquipo = new Form_asignarEquipo();
+        
+        formAsignarEquipo.setVisible(true);
 
 
     }//GEN-LAST:event_jbtn_ingresarActionPerformed
+
+    private void jtbn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbn_salirActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jtbn_salirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -243,6 +264,7 @@ public class Form_Inventario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JButton jbtn_ingresar;
+    private javax.swing.JButton jtbn_salir;
     private javax.swing.JTextField jtxt_descripcion;
     private javax.swing.JTextField jtxt_numeroserie;
     private javax.swing.JTextField jtxt_nus;

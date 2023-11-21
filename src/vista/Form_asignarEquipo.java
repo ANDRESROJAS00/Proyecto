@@ -40,6 +40,7 @@ public class Form_asignarEquipo extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jtxt_firmaUsuario = new javax.swing.JTextField();
         jbtn_asignar = new javax.swing.JButton();
+        jbtn_salir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -81,6 +82,13 @@ public class Form_asignarEquipo extends javax.swing.JFrame {
             }
         });
 
+        jbtn_salir.setText("Salir");
+        jbtn_salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtn_salirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -98,6 +106,7 @@ public class Form_asignarEquipo extends javax.swing.JFrame {
                     .addComponent(jtxt_npiUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(59, 59, 59))
             .addComponent(jbtn_asignar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jbtn_salir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -118,7 +127,9 @@ public class Form_asignarEquipo extends javax.swing.JFrame {
                     .addComponent(jtxt_firmaUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jbtn_asignar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jbtn_salir)
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         pack();
@@ -155,9 +166,20 @@ public class Form_asignarEquipo extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Error al asignar el equipo");
         }
+        
+        
+        this.dispose();
+        
+        Form_TarjetaCustodia formTarjetaCustodia = new Form_TarjetaCustodia();
+        
+        formTarjetaCustodia.setVisible(true);
 
 
     }//GEN-LAST:event_jbtn_asignarActionPerformed
+
+    private void jbtn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_salirActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jbtn_salirActionPerformed
 
     private int obtenerIdUsuario() {
         try {
@@ -179,6 +201,10 @@ public class Form_asignarEquipo extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Ingrese un valor válido para el ID del equipo", "Error", JOptionPane.ERROR_MESSAGE);
             return -1;  // o algún valor que indique que no se pudo obtener el ID
         }
+        
+        
+        
+        
     }
 
     /**
@@ -230,6 +256,7 @@ public class Form_asignarEquipo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JButton jbtn_asignar;
+    private javax.swing.JButton jbtn_salir;
     private javax.swing.JTextField jtxt_firmaUsuario;
     private javax.swing.JTextField jtxt_npiUsuario;
     private javax.swing.JTextField jtxt_nusEquipo;

@@ -224,6 +224,12 @@ public class Form_usuario extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Error al ingresar el usuario");
         }
+        
+        this.dispose();
+        
+        Form_Inventario formInventario = new Form_Inventario();
+        
+        formInventario.setVisible(true);
     }//GEN-LAST:event_jbtn_ingresarActionPerformed
 
     private void jbtn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtn_salirActionPerformed
