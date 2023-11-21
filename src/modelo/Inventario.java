@@ -5,7 +5,7 @@ package modelo;
  * @author andre
  */
 public class Inventario {
-    
+
     private int id_inventario, numero_serie, nus;
     private String ubicacion, descripcion;
 
@@ -64,12 +64,5 @@ public class Inventario {
     public String toString() {
         return "Inventario{" + "id_inventario=" + id_inventario + ", numero_serie=" + numero_serie + ", nus=" + nus + ", ubicacion=" + ubicacion + ", descripcion=" + descripcion + '}';
     }
-    
-    
 
-    
-    
-    
-    
-    
 }

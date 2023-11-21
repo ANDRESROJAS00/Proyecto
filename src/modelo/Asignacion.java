@@ -1,14 +1,11 @@
-
 package modelo;
-
-
 
 /**
  *
  * @author andre
  */
 public class Asignacion {
-    
+
     private int id_asignacion, id_inventario, id_usuario;
     private String firma;
 
@@ -59,17 +56,4 @@ public class Asignacion {
         return "Asignacion{" + "id_asignacion=" + id_asignacion + ", id_inventario=" + id_inventario + ", id_usuario=" + id_usuario + ", firma=" + firma + '}';
     }
 
-    
-    
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    
 }

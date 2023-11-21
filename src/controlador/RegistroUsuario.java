@@ -166,60 +166,8 @@ public class RegistroUsuario {
         return lista;
     }
 
-    public boolean asignarEquipoAUsuario(int npiUsuario, int nusEquipo, String firmaUsuario) {
-        try {
-            Conexion con = new Conexion();
-            Connection cnx = con.obtenerConexion();
+    
 
-            // Verificar que el usuario y el equipo existen antes de realizar la asignación
-            if (!existeUsuario(npiUsuario) || !existeEquipo(nusEquipo)) {
-                JOptionPane.showMessageDialog(null, "Usuario o equipo no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
-                return false;
-            }
-
-            // Verificar que el equipo no esté asignado a otro usuario
-            if (equipoAsignadoAUsuario(nusEquipo)) {
-                JOptionPane.showMessageDialog(null, "El equipo ya está asignado a otro usuario", "Error", JOptionPane.ERROR_MESSAGE);
-                return false;
-            }
-
-            // Realizar la asignación
-            String query = "INSERT INTO asignacion(npi_usuario, nus_equipo, firma_usuario) VALUES (?,?,?)";
-            PreparedStatement stmt = cnx.prepareCall(query);
-            stmt.setInt(1, npiUsuario);
-            stmt.setInt(2, nusEquipo);
-            stmt.setString(3, firmaUsuario);
-
-            stmt.executeUpdate();
-            stmt.close();
-            cnx.close();
-            return true;
-
-        } catch (SQLException e) {
-            System.out.println("Error en la consulta SQL al asignar equipo a usuario: " + e.getMessage());
-            return false;
-        }
-    }
-
-    private boolean existeUsuario(int npiUsuario) {
-        // Implementar la lógica para verificar si el usuario existe
-        // Puedes consultar la base de datos para verificar la existencia del usuario
-        // y devolver true si existe, false si no existe
-        return false;  // Debes implementar esta lógica
-    }
-
-    private boolean existeEquipo(int nusEquipo) {
-        // Implementar la lógica para verificar si el equipo existe
-        // Puedes consultar la base de datos para verificar la existencia del equipo
-        // y devolver true si existe, false si no existe
-        return false;  // Debes implementar esta lógica
-    }
-
-    private boolean equipoAsignadoAUsuario(int nusEquipo) {
-        // Implementar la lógica para verificar si el equipo ya está asignado a otro usuario
-        // Puedes consultar la base de datos para verificar si hay una asignación existente
-        // y devolver true si está asignado, false si no está asignado
-        return false;  // Debes implementar esta lógica
-    }
+    
 
 }

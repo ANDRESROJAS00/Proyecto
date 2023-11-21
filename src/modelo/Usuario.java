@@ -1,4 +1,3 @@
-
 package modelo;
 
 /**
@@ -6,7 +5,7 @@ package modelo;
  * @author andre
  */
 public class Usuario {
-    
+
     private int id_usuario, npi;
     private String pnombre, snombre, appaterno, apmaterno;
 
@@ -74,11 +73,5 @@ public class Usuario {
     public String toString() {
         return "Usuario{" + "id_usuario=" + id_usuario + ", npi=" + npi + ", pnombre=" + pnombre + ", snombre=" + snombre + ", appaterno=" + appaterno + ", apmaterno=" + apmaterno + '}';
     }
-    
-    
-    
-    
-    
-    
-    
+
 }
